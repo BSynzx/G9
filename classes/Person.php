@@ -1,7 +1,10 @@
 <?php
 
+// Person - abstract base class: shared identity for all user types.
+// OOP: abstraction (abstract class/contract) + encapsulation (protected fields).
 abstract class Person
 {
+    // Encapsulation: protected, only reachable by subclasses/getters.
     protected string $firstName;
     protected string $middleName;
     protected string $lastName;
@@ -25,6 +28,7 @@ abstract class Person
         $this->email      = $email;
     }
 
+    // Abstract: subclasses must define their own role/table (polymorphism).
     abstract public function getRole(): string;
     abstract public function getTableName(): string;
 
@@ -33,6 +37,7 @@ abstract class Person
         return trim($this->firstName . ' ' . $this->lastName);
     }
 
+    // Encapsulation: public getters/setters.
     public function getFirstName(): string  { return $this->firstName; }
     public function getMiddleName(): string { return $this->middleName; }
     public function getLastName(): string   { return $this->lastName; }

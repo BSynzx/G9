@@ -3,7 +3,7 @@ require_once __DIR__ . '/../classes/Auth.php';
 require_once __DIR__ . '/../classes/Complaint.php';
 require_once __DIR__ . '/../classes/Photo.php';
 require_once __DIR__ . '/../classes/Rating.php';
-require_once __DIR__ . '/../classes/FieldStaff.php';
+// FieldStaff is now declared inside User.php (loaded via Auth.php above).
 require_once __DIR__ . '/../classes/Notification.php';
 
 $auth = new Auth();

@@ -1,9 +1,8 @@
 <?php
 
+// User.php now also declares Admin and FieldStaff (single file, shared hierarchy).
 require_once __DIR__ . '/Database.php';
 require_once __DIR__ . '/User.php';
-require_once __DIR__ . '/Admin.php';
-require_once __DIR__ . '/FieldStaff.php';
 
 class Auth
 {
