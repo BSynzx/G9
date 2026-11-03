@@ -1,0 +1,181 @@
+/* ==========================================================
+   Citizen Connect – login and register pages
+   Colors are set in :root. Photo: images/background.png
+   ========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=League+Spartan:wght@700;800&display=swap');
+
+:root {
+  --blue: #0a4fbf;
+  --yellow: #fdb913;
+  --input: #e0e0e0;
+  --text: #555;
+  --panel: rgba(34, 34, 38, 0.58);   /* dark translucent panel */
+  --veil: rgba(0, 0, 0, 0.32);       /* darkens the whole photo */
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  color: var(--text);
+  /* If images/background.jpg is missing, the gradient shows instead */
+  background:
+    url('../images/background.png') center / cover no-repeat fixed,
+    linear-gradient(135deg, #6b7a8c 0%, #2f3b4a 100%);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: var(--veil);
+  pointer-events: none;
+}
+
+.frame {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+/* ---------- Dark panel holding the card and the logo ---------- */
+.layout {
+  display: flex;
+  width: min(1212px, 100%);
+  min-height: min(613px, calc(100vh - 32px));
+  background: var(--panel);
+  border-radius: 60px;
+  overflow: hidden;
+}
+
+.layout.reverse { flex-direction: row-reverse; }
+
+.brand {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  min-width: 0;
+}
+
+.logo { width: min(70%, 350px); height: auto; display: block; }
+
+/* ---------- White card ---------- */
+.card {
+  flex: 0 0 43.2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 48px;
+  background: #fff;
+  border-radius: 52px;
+  text-align: center;
+}
+
+.card.wide { flex-basis: 52%; padding: 40px 44px; }
+
+h1 {
+  margin: 0 0 14px;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  line-height: 1;
+  color: var(--blue);
+}
+
+.socials { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 20px; }
+
+.dot {
+  all: unset;
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 50%;
+}
+
+.dot:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.dot img { width: 38px; height: 38px; display: block; }
+
+.bar { width: 3px; height: 50px; background: #333; }
+
+.hint { margin: 0 0 20px; font-size: 1.05rem; }
+
+/* ---------- Inputs ---------- */
+.field {
+  display: block;
+  width: 100%;
+  height: 46px;
+  margin: 0 0 16px;
+  padding: 0 36px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--input);
+  font: inherit;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+.field::placeholder { color: #666; opacity: 1; }
+.field:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+.card.wide .field { margin-bottom: 12px; height: 44px; }
+
+.row { display: flex; gap: 14px; width: 100%; }
+.row .field { flex: 1; min-width: 0; }
+
+.small { align-self: flex-start; margin: -6px 0 6px 36px; font-size: 0.78rem; }
+.small a { color: var(--text); text-decoration: none; }
+.small a:hover { text-decoration: underline; }
+
+.switch { margin: 26px 0 14px; font-size: 0.95rem; }
+.switch a { color: var(--blue); font-weight: 500; }
+.card.wide .switch { margin: 14px 0 0; }
+
+a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+
+/* ---------- Button ---------- */
+.btn {
+  padding: 14px 32px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--blue);
+  color: var(--yellow);
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  font-size: 1.55rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 80ms ease-in, background 0.2s;
+}
+
+.btn:hover    { background: #0942a1; }
+.btn:active   { transform: scale(0.96); }
+.btn:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; box-shadow: 0 0 0 6px var(--blue); }
+
+/* ---------- Narrow screens: logo on top, card below ---------- */
+@media (max-width: 860px) {
+  .frame { place-items: start center; }
+
+  .layout, .layout.reverse {
+    flex-direction: column-reverse;
+    min-height: 0;
+    border-radius: 36px;
+  }
+
+  .brand { padding: 26px 0 20px; }
+  .logo  { width: min(62%, 240px); }
+
+  .card, .card.wide { flex-basis: auto; padding: 32px 22px; border-radius: 32px; }
+  .field { padding: 0 24px; }
+  .row { flex-direction: column; gap: 0; }
+  .row .field { flex: none; }
+  .small { margin-left: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none; }
+}
